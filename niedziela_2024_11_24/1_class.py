@@ -5,11 +5,7 @@ class Samochod:
         self.marka = marka
         self.model = model
         self.kolor = kolor
-        if rocznik < 1970 or rocznik > date.today().year:
-            print("Błędna data.")
-        else:
-            self.rocznik = rocznik
-            print(f"Rocznik zmieniony, aktualny to {self.rocznik}.")
+        self.sprawdz_rocznik_i_ustaw(rocznik)
     def jedz(self):
         print(f"Samochód {self.marka} {self.model} {self.kolor} {self.rocznik} jedzie.")
     def zmiana_marki(self, nowa_marka):
@@ -17,11 +13,15 @@ class Samochod:
     def jaka_marka(self):
         return self.marka
     def zmiana_rocznika(self, nowy_rocznik):
-        if nowy_rocznik < 1970 or nowy_rocznik > date.today().year:
+        self.sprawdz_rocznik_i_ustaw(nowy_rocznik)
+
+    def sprawdz_rocznik_i_ustaw(self, rocznik):
+        if rocznik < 1970 or rocznik > date.today().year:
             print("Błędna data.")
         else:
-            self.rocznik = nowy_rocznik
+            self.rocznik = rocznik
             print(f"Rocznik zmieniony, aktualny to {self.rocznik}.")
+
 
 
 samochod_czerwony = Samochod("Fiat", "126p","czerwony", 1980)
