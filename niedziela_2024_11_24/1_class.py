@@ -5,7 +5,7 @@ class Samochod:
         self.marka = marka
         self.model = model
         self.kolor = kolor
-        self.sprawdz_rocznik_i_ustaw(rocznik)
+        self.sprawdz_rocznik_i_ustaw(int(rocznik))
     def jedz(self):
         print(f"Samochód {self.marka} {self.model} {self.kolor} {self.rocznik} jedzie.")
     def zmiana_marki(self, nowa_marka):
@@ -24,7 +24,7 @@ class Samochod:
 
 
 
-samochod_czerwony = Samochod("Fiat", "126p","czerwony", 1980)
+samochod_czerwony = Samochod("Fiat", "126p","czerwony", '1980')
 samochod_czerwony.jedz()
 #samochod_czerwony.rocznik = -80
 samochod_czerwony.zmiana_rocznika(1999)
