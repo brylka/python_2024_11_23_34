@@ -21,9 +21,23 @@ class Dane:
             suma += int(pacjent['wiek'])
         return suma
 
+    def srednia_wieku(self):
+        return int(self.suma_lat()/len(self.lista))
+
+    def najdluzsze_nazwisko(self):
+        max = len(self.lista[0]["nazwisko"])
+        nazwisko = self.lista[0]["nazwisko"]
+        for pacjent in self.lista:
+            if max < len(pacjent["nazwisko"]):
+                max = len(pacjent["nazwisko"])
+                nazwisko = pacjent["nazwisko"]
+        return nazwisko
+
+
 dane = Dane()
 dane.pobierz_dane_z_csv("dane.csv")
-print(dane.suma_lat())
+print(f"Średnia wieku wynosi: {dane.srednia_wieku()}")
+print(f"Najdłuższe nazwisko to: {dane.najdluzsze_nazwisko()}")
 
 
 
@@ -31,13 +45,5 @@ print(dane.suma_lat())
 
 
 
-# max = len(lista[0]["nazwisko"])
-# nazwisko = lista[0]["nazwisko"]
-# for pacjent in lista:
-#     if max < len(pacjent["nazwisko"]):
-#         max = len(pacjent["nazwisko"])
-#         nazwisko = pacjent["nazwisko"]
 #
-# print(f"Suma lat wynosi {suma}")
-# print(f"Średni wiek wynosi {suma/len(lista):.0f}")
 # print(f"Najdłuższe nazwisko: {nazwisko}")
