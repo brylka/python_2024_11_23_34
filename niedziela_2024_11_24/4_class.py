@@ -4,15 +4,25 @@ class Samochod:
         self.predkosc = 0
         self.sprawny = True
     def stan(self):
-        print(f"Prędkość samochodu {self.marka} wynosi {self.predkosc}km/h.")
+        if self.sprawny:
+            print(f"Prędkość samochodu {self.marka} wynosi {self.predkosc}km/h.")
+        else:
+            print(f"Samochód {self.marka} jest niesprawny.")
     def jedz(self):
-        self.predkosc += 10
-        print(f"Samochód {self.marka} jedzie z prędkością {self.predkosc}km/h.")
+        if self.sprawny:
+            self.predkosc += 10
+            print(f"Samochód {self.marka} jedzie z prędkością {self.predkosc}km/h.")
     def hamuj(self):
-        self.predkosc -= 10
-        print(f"Samochód {self.marka} hamuje i jedzie z prędkością {self.predkosc}km/h.")
+        if self.sprawny:
+            self.predkosc -= 10
+            print(f"Samochód {self.marka} hamuje i jedzie z prędkością {self.predkosc}km/h.")
     def kolizja(self, inny_samochod):
-        print(f"Nastąpiła kolizja {self.marka} z {swiat.samochody[inny_samochod].marka}")
+        if self.sprawny:
+            self.sprawny = False
+            self.predkosc = 0
+            swiat.samochody[inny_samochod].sprawny = False
+            swiat.samochody[inny_samochod].predkosc = 0
+            print(f"Nastąpiła kolizja {self.marka} z {swiat.samochody[inny_samochod].marka}")
 
 class Swiat:
     def __init__(self):
