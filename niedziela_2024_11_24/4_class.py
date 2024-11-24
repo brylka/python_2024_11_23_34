@@ -12,7 +12,7 @@ class Samochod:
         self.predkosc -= 10
         print(f"Samochód {self.marka} hamuje i jedzie z prędkością {self.predkosc}km/h.")
     def kolizja(self, inny_samochod):
-        print(f"Nastąpiła kolizja {self.marka} z {swiat.samochody[inny_samochod]}")
+        print(f"Nastąpiła kolizja {self.marka} z {swiat.samochody[inny_samochod].marka}")
 
 class Swiat:
     def __init__(self):
