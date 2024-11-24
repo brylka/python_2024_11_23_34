@@ -12,21 +12,28 @@ class Samochod:
         self.predkosc -= 10
         print(f"Samochód {self.marka} hamuje i jedzie z prędkością {self.predkosc}km/h.")
 
-samochody = []
+class Swiat:
+    def __init__(self):
+        self.samochody = []
+    def zycie(self):
+        while True:
+            if len(self.samochody) != 0:
+                ktory = int(input(f"Który samochód? (0 - {len(self.samochody)-1}): "))
+                co = int(input(f"Co zrobić z samochodem {self.samochody[ktory].marka}? (1-przyśpiesz, 2-zwolnij, 3-sprawdż stan): "))
+                if co == 1:
+                    self.samochody[ktory].jedz()
+                elif co == 2:
+                    self.samochody[ktory].hamuj()
+                elif co == 3:
+                    self.samochody[ktory].stan()
+            else:
+                print("Brak samochodów do zabawy, podaj dane nowego samochodu.")
+                ile = int(input("Ile samochodów dodać: "))
+                for i in range(ile):
+                    marka = input(f"Podaj markę samochodu nr {i}: ")
+                    self.samochody.append(Samochod(marka))
+                for samochod in self.samochody:
+                    print(samochod.marka)
 
-while True:
-    if len(samochody) != 0:
-        ktory = int(input(f"Który samochód? (0 - {len(samochody)-1}): "))
-        co = int(input(f"Co zrobić z samochodem {samochody[ktory].marka}? (1-przyśpiesz, 2-zwolnij, 3-sprawdż stan): "))
-        if co == 1:
-            samochody[ktory].jedz()
-        elif co == 2:
-            samochody[ktory].hamuj()
-        elif co == 3:
-            samochody[ktory].stan()
-    else:
-        print("Brak samochodów do zabawy, podaj dane nowego samochodu.")
-        marka = input("Podaj markę samochodu: ")
-        samochody.append(Samochod(marka))
-        #samochod = Samochod(marka)
-        #samochody.append(samochod)
+if __name__ == "__main__":
+    Swiat().zycie()
