@@ -35,15 +35,13 @@ class Dane:
 
 
 dane = Dane()
-dane.pobierz_dane_z_csv("dane.csv")
-print(f"Średnia wieku wynosi: {dane.srednia_wieku()}")
-print(f"Najdłuższe nazwisko to: {dane.najdluzsze_nazwisko()}")
+while True:
+    co = int(input("Co chcesz zrobić? (1-wczytaj dane, 2-podaj średnią, 3-najdłuższe nazwisko): "))
+    if co == 1:
+        skad = input("Podaj pnazwę pliku (dane na pewno znajdziesz w pliku 'dane.csv'): ")
+        dane.pobierz_dane_z_csv(skad)
+    elif co == 2:
+        print(f"Średnia wieku wynosi: {dane.srednia_wieku()}")
+    elif co == 3:
+        print(f"Najdłuższe nazwisko to: {dane.najdluzsze_nazwisko()}")
 
-
-
-
-
-
-
-#
-# print(f"Najdłuższe nazwisko: {nazwisko}")
