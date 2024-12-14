@@ -53,10 +53,12 @@ class GameOfLife:
 
 
 
-game = GameOfLife(10,10)
-game.set_cell(4,4)
-game.set_cell(5,4)
-game.set_cell(6,4)
+game = GameOfLife(30,30)
+game.set_cell(22,22)
+game.set_cell(23,22)
+game.set_cell(24,22)
+game.set_cell(22,23)
+game.set_cell(23,24)
 
 while True:
     game.display()
