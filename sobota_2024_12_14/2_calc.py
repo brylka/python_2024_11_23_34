@@ -1,13 +1,22 @@
 class Calc:
     @staticmethod
     def add(a, b):
-        return a + b
+        try:
+            return a + b
+        except TypeError:
+            return "Błędne dane"
     @staticmethod
     def sub(a,b):
-        return a - b
+        try:
+            return a - b
+        except TypeError:
+            return "Błędne dane"
     @staticmethod
     def mul(a,b):
-        return a * b
+        try:
+            return float(a) * float(b)
+        except TypeError:
+            return "Błędne dane"
     @staticmethod
     def div(a,b):
         try:
@@ -18,9 +27,9 @@ class Calc:
             return "Błędne dane"
 
 
-print(f"Dodawanie: {Calc.add(4,2)}")
+print(f"Dodawanie: {Calc.add(4.5,2)}")
 print(f"Odejmowanie: {Calc.sub(4,2)}")
-print(f"Mnożenie: {Calc.mul(4,2)}")
-print(f"Dzielenie: {Calc.div('4',0)}")
+print(f"Mnożenie: {Calc.mul(4,5)}")
+print(f"Dzielenie: {Calc.div(4,2)}")
 
 
