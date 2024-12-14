@@ -1,3 +1,4 @@
+import random
 from time import sleep
 
 class GameOfLife:
@@ -9,7 +10,8 @@ class GameOfLife:
         for y in range(self.height):
             row = []
             for x in range(self.width):
-                row.append(0)
+                rnd = random.randint(0,1)
+                row.append(rnd)
             self.grid.append(row)
 
     def set_cell(self, x, y):
@@ -54,11 +56,11 @@ class GameOfLife:
 
 
 game = GameOfLife(30,30)
-game.set_cell(22,22)
-game.set_cell(23,22)
-game.set_cell(24,22)
-game.set_cell(22,23)
-game.set_cell(23,24)
+# game.set_cell(22,22)
+# game.set_cell(23,22)
+# game.set_cell(24,22)
+# game.set_cell(22,23)
+# game.set_cell(23,24)
 
 while True:
     game.display()
