@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabela kursów</title>
+</head>
+<body>
+    <h1>Przelicznik PLN na wybraną walutę</h1>
+
+    <form action="/convert" method="post">
+        <input type="number" name="pln" value="0">
+
+        <select name="currency">
+        {% for key, _ in a.items() %}
+            <option>{{ key }}
+        {% endfor %}
+        </select>
+        <input type="submit" value="Przelicz">
+    </form>
+
+</body>
+</html>
