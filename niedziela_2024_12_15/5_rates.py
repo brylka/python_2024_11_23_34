@@ -30,7 +30,8 @@ def convert():
             pln = 0
         currency = request.form['currency']
         result = rates[currency]*pln
-        return str(result)
+        text = f"Kwota {pln}PLN to {result}{currency} - przelicznik {rates[currency]}"
+        return render_template("convert.html", a=rates, text=text)
     else:
         return render_template("convert.html", a=rates)
 
