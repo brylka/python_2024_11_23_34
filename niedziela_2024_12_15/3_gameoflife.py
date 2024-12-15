@@ -1,11 +1,15 @@
+import pygame
 import random
 from time import sleep
 
 class GameOfLife:
-    def __init__(self, width, height):
+    def __init__(self, width, height, cell_size=10):
         self.width = width
         self.height = height
         self.grid = [[random.randint(0,1) for x in range(self.width)] for y in range(self.height)]
+        pygame.init()
+        self.screen = pygame.display.set_mode((self.width*cell_size, self.height*cell_size))
+        pygame.display.set_caption("Aplikacja pygame")
 
     def set_cell(self, x, y):
         self.grid[y-1][x-1] = not self.grid[y-1][x-1]
@@ -50,6 +54,6 @@ class GameOfLife:
             sleep(1)
 
 
-game = GameOfLife(10,10)
+game = GameOfLife(50,50)
 game.run()
 
