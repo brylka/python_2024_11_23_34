@@ -7,6 +7,8 @@ class GameOfLife:
         self.width = width
         self.height = height
         self.cell_size = cell_size
+        self.color = (255,255,255)
+        self.speed = 1/60
         self.grid = [[random.randint(0,1) for x in range(self.width)] for y in range(self.height)]
         pygame.init()
         self.screen = pygame.display.set_mode((self.width*cell_size, self.height*cell_size))
@@ -40,18 +42,18 @@ class GameOfLife:
         self.grid = new_grid
 
     def display(self):
-        for y in self.grid:
-            for x in y:
-                if x == 0:
-                    print('`', end=" ")
-                else:
-                    print('*', end=" ")
-            print()
+        # for y in self.grid:
+        #     for x in y:
+        #         if x == 0:
+        #             print('`', end=" ")
+        #         else:
+        #             print('*', end=" ")
+        #     print()
 
         for y in range(self.height):
             for x in range(self.width):
                 if self.grid[y][x] == 1:
-                    pygame.draw.rect(self.screen, (255, 255, 255), (x * self.cell_size, y * self.cell_size, self.cell_size, self.cell_size))
+                    pygame.draw.rect(self.screen, self.color, (x * self.cell_size, y * self.cell_size, self.cell_size, self.cell_size))
                 else:
                     pygame.draw.rect(self.screen, (0,0,0), (x * self.cell_size, y * self.cell_size, self.cell_size, self.cell_size))
         pygame.display.flip()
@@ -67,10 +69,17 @@ class GameOfLife:
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_s:
                         stop = not stop
+                    elif event.key == pygame.K_r:
+                        self.color = (255,0,0)
+                    elif event.key == pygame.K_MINUS:
+                        self.speed += 1/60
+                    elif event.key == pygame.K_0 and self.speed >= 1/60:
+                        self.speed -= 1/60
+
             if stop == False:
                 game.display()
                 game.update()
-            sleep(1/60)
+            sleep(self.speed)
 
 
 game = GameOfLife()
