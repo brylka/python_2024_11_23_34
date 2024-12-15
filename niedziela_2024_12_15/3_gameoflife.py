@@ -3,9 +3,10 @@ import random
 from time import sleep
 
 class GameOfLife:
-    def __init__(self, width, height, cell_size=10):
+    def __init__(self, width=30, height=30, cell_size=10):
         self.width = width
         self.height = height
+        self.cell_size = cell_size
         self.grid = [[random.randint(0,1) for x in range(self.width)] for y in range(self.height)]
         pygame.init()
         self.screen = pygame.display.set_mode((self.width*cell_size, self.height*cell_size))
@@ -50,9 +51,9 @@ class GameOfLife:
         for y in range(self.height):
             for x in range(self.width):
                 if self.grid[y][x] == 1:
-                    pygame.draw.rect(self.screen, (255, 255, 255), (x * 10, y * 10, 10, 10))
+                    pygame.draw.rect(self.screen, (255, 255, 255), (x * self.cell_size, y * self.cell_size, self.cell_size, self.cell_size))
                 else:
-                    pygame.draw.rect(self.screen, (0,0,0), (x * 10, y * 10, 10, 10))
+                    pygame.draw.rect(self.screen, (0,0,0), (x * self.cell_size, y * self.cell_size, self.cell_size, self.cell_size))
         pygame.display.flip()
 
 
@@ -67,6 +68,6 @@ class GameOfLife:
             sleep(1/60)
 
 
-game = GameOfLife(50,50)
+game = GameOfLife()
 game.run()
 
