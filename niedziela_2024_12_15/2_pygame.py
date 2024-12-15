@@ -6,7 +6,7 @@ pygame.init()
 screen = pygame.display.set_mode((500,500))
 pygame.display.set_caption("Aplikacja pygame")
 
-
+button = False
 color = (255,255,255)
 running = True
 while running:
@@ -20,10 +20,16 @@ while running:
                 color = (255,0,0)
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
+                button = True
+        elif event.type == pygame.MOUSEBUTTONUP:
+            if event.button == 1:
+                button = False
+        elif event.type == pygame.MOUSEMOTION:
+            if button:
                 mouse_x, mouse_y = event.pos
-                #print(mouse_x, mouse_y)
-                #screen.set_at((mouse_x, mouse_y), color)
-                #pygame.draw.rect(screen,color,(mouse_x-5, mouse_y-5, 10, 10))
+                    #print(mouse_x, mouse_y)
+                    #screen.set_at((mouse_x, mouse_y), color)
+                    #pygame.draw.rect(screen,color,(mouse_x-5, mouse_y-5, 10, 10))
                 pygame.draw.circle(screen, color, (mouse_x, mouse_y), 5)
     pygame.display.flip()
 
