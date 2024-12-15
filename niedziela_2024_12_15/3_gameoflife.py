@@ -9,7 +9,7 @@ class GameOfLife:
         self.grid = [[random.randint(0,1) for x in range(self.width)] for y in range(self.height)]
         pygame.init()
         self.screen = pygame.display.set_mode((self.width*cell_size, self.height*cell_size))
-        pygame.display.set_caption("Aplikacja pygame")
+        pygame.display.set_caption("Gra w życie")
 
     def set_cell(self, x, y):
         self.grid[y-1][x-1] = not self.grid[y-1][x-1]
@@ -47,11 +47,24 @@ class GameOfLife:
                     print('*', end=" ")
             print()
 
+        for y in range(self.height):
+            for x in range(self.width):
+                if self.grid[y][x] == 1:
+                    pygame.draw.rect(self.screen, (255, 255, 255), (x * 10, y * 10, 10, 10))
+                else:
+                    pygame.draw.rect(self.screen, (0,0,0), (x * 10, y * 10, 10, 10))
+        pygame.display.flip()
+
+
     def run(self):
-        while True:
+        running = True
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
             game.display()
             game.update()
-            sleep(1)
+            sleep(1/60)
 
 
 game = GameOfLife(50,50)
