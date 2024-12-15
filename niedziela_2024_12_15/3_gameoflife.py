@@ -58,13 +58,18 @@ class GameOfLife:
 
 
     def run(self):
+        stop = False
         running = True
         while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
-            game.display()
-            game.update()
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_s:
+                        stop = not stop
+            if stop == False:
+                game.display()
+                game.update()
             sleep(1/60)
 
 
